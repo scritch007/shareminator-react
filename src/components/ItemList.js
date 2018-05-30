@@ -18,7 +18,7 @@ const ItemList = ({ items, browse }) => {
         </tr>
       </thead>
       <tbody>
-      {items.map(item =>
+      {items.elements.map(item =>
         <Item
           key={item.id}
           {...item}
@@ -31,11 +31,13 @@ const ItemList = ({ items, browse }) => {
 }
 
 ItemList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    kind: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  items: {elements: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      kind: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
+    currentElement: PropTypes.string.isRequired
+  }.isRequired,
   browse: PropTypes.func.isRequired
 }
 
