@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 import { visibilityFilter } from './visibilityFilter'
+import {modal} from "./modal"
+import {auth} from "./auth";
 
 export const items = (state = {elements: [], currentElement:"/"}, action) => {
 
@@ -16,7 +18,7 @@ export const items = (state = {elements: [], currentElement:"/"}, action) => {
                 resp.push({name:"..", id:up})
             }
             action.resp.forEach((elem) => {
-                elem.id = "/" + elem.name;
+                elem.id = action.parent + "/" + elem.name;
                 resp.push(elem);
             })
             return {
@@ -33,4 +35,6 @@ export const items = (state = {elements: [], currentElement:"/"}, action) => {
 export default combineReducers({
     visibilityFilter,
     items,
+    modal,
+    auth,
 })

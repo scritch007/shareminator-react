@@ -1,15 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import FolderIcon from '@material-ui/icons/Folder';
+import NoteIcon from '@material-ui/icons/Note';
 
 const Item = ({ onClick, kind, name}) => {
         console.log(name)
     return (
-        <tr onClick={onClick}>
-            <th scope="row">{kind}</th>
-            <td>{name}</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
+        <ListItem onClick={onClick}>
+            <ListItemIcon scope="row">{kind == "folder" && <FolderIcon/> || <NoteIcon/> }</ListItemIcon>
+            <ListItemText>{name}</ListItemText>
+        </ListItem>
     )
 }
 

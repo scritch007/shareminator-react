@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import rootReducer from './reducers'
-import { listFolders } from './actions'
+import { browse } from './actions'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import registerServiceWorker from './registerServiceWorker';
@@ -24,7 +24,7 @@ const store = createStore(
 
 render(
   <Provider store={store}>
-    <App />
+    <App open={false}/>
   </Provider>,
   document.getElementById('root')
 )
@@ -32,4 +32,4 @@ registerServiceWorker();
 
 
 store
-  .dispatch(listFolders('/'))
+  .dispatch(browse('/'))

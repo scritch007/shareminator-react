@@ -1,23 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from './Item'
+import List from '@material-ui/core/List';
+
 
 const ItemList = ({ items, browse }) => {
   if (!items){
     items = [];
   }  
   return (
-
-      <table className='table'>
-      <thead className="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
+    <List>
       {items.elements.map(item =>
         <Item
           key={item.id}
@@ -25,8 +17,7 @@ const ItemList = ({ items, browse }) => {
           onClick={() => browse(item.id)}
         />
       )}
-      </tbody>
-      </table>
+    </List>
   )
 }
 

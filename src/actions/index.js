@@ -1,37 +1,4 @@
-import fetch from 'cross-fetch'
-
-export function listFolders(folder){
-    return function(dispatch){
-        dispatch({type:"BROWSE_REQUEST", id: folder})
-
-        fetch("https://sharing.legrand.ws/commands",{
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: "browser.list",
-                browser: {
-                    list: {
-                        input: {
-                            path: folder,
-                            show_hidden_files:false
-                        }
-                    }
-                }
-            })
-        }).then(function(resp){
-            return resp.json()
-        }).then(function (respJSON){
-            dispatch({
-                type: "BROWSE_FOLDER_SUCCESS",
-                resp: respJSON.browser.list.output.children,
-                parent: folder
-            })
-        })
-    }
-}
+import { listFolders } from './browse'
 
 export const VisibilityFilters = {
     SHOW_ALL: 'SHOW_ALL',
@@ -40,3 +7,26 @@ export const VisibilityFilters = {
 }
 
 export const browse = id => { return listFolders(id)}
+
+
+export const login = (onClose, onLogin) => {
+    return {
+        "type": "SHOW_MODAL",
+        modalType: "LOGIN",
+        modalProps: {
+            open:true,
+            "onClose": onClose,
+            "onLogin": onLogin
+        }
+    }
+}
+
+export const hideLogin = () => {
+    return {
+        "type": "HIDE_MODAL",
+        modalType: "LOGIN",
+        modalProps: {
+            open:false,
+        }
+    }
+}
