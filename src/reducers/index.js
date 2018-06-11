@@ -15,7 +15,7 @@ export const items = (state = {elements: [], currentElement:"/"}, action) => {
                 if (up === ""){
                     up = "/"
                 }
-                resp.push({name:"..", id:up})
+                resp.push({name:"..", id:up, mDate:0, mimetype:""})
             }
             action.resp.forEach((elem) => {
                 elem.id = action.parent + "/" + elem.name;
