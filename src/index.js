@@ -10,8 +10,6 @@ import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import registerServiceWorker from './registerServiceWorker';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const loggerMiddleware = createLogger()
 
 const store = createStore(

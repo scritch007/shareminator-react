@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import VisibleItems from '../containers/VisibleItems'
 import PropTypes from 'prop-types'
@@ -32,16 +31,16 @@ const styles = {
 
 class App extends Component {
 
-  handleClickOpen = () => {
+  handleClickOpen() {
     console.log(this.handleClose)
     this.props.showLogin(this.handleClose, this.handleLogin)
   }
 
-  handleClose = () => {
+  handleClose(){
     this.props.hideLogin()
   };
 
-  handleLogin = (email, password) => {
+  handleLogin (email, password) {
     this.props.sendLogin(email, password);
     this.props.hideLogin()
   }
